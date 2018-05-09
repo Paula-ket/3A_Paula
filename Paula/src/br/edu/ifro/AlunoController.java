@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -43,7 +44,7 @@ public class AlunoController implements Initializable {
          aluno1.setNome(txtNome.getText());
          
          em.getTransaction().begin();
-         
+         em.persist(aluno1);
          em.getTransaction().commit();
          
          
@@ -51,6 +52,8 @@ public class AlunoController implements Initializable {
 
     @FXML
     private void fechar(ActionEvent event) {
+        Stage stage = (Stage) txtNome.getScene().getWindow();
+    stage.close();
     }
     
 }
